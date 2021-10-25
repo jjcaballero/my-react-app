@@ -45,8 +45,8 @@ function App() {
           Learning React in GitHub Pages deployed with GitHub actions
         </a>
       </header>
+      <div id="example-table"></div>
     </div>
-    <div id="example-table"></div>
   );
 }
 
