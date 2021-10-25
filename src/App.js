@@ -28,6 +28,8 @@ var table = new Tabulator("#example-table", {
   },
 });
 
+console.log(table);
+
 function App() {
   return (
     <div className="App">
