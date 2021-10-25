@@ -1,10 +1,21 @@
 // import logo from './logo.svg';
 import './App.css';
+//import {Helmet} from "react-helmet";
 
-import {TabulatorFull as Tabulator} from 'tabulator-tables';
+import 'react-tabulator/lib/styles.css';
+import { ReactTabulator } from 'react-tabulator'
 
-//define some sample data
-var tabledata = [
+//import {TabulatorFull as Tabulator} from 'tabulator-tables';
+
+const columns = [
+  { title: "Name", field: "name", width: 150 },
+  { title: "Age", field: "age", hozAlign: "left", formatter: "progress" },
+  { title: "Favourite Color", field: "col" },
+  { title: "Date Of Birth", field: "dob", hozAlign: "center" },
+  { title: "Rating", field: "rating", hozAlign: "center", formatter: "star" },
+  { title: "Passed?", field: "passed", hozAlign: "center", formatter: "tickCross" }
+];
+var data = [
   {id:1, name:"Oli Bob", age:"12", col:"red", dob:""},
   {id:2, name:"Mary May", age:"1", col:"blue", dob:"14/05/1982"},
   {id:3, name:"Christine Lobowski", age:"42", col:"green", dob:"22/05/1982"},
@@ -12,31 +23,13 @@ var tabledata = [
   {id:5, name:"Margret Marmajuke", age:"16", col:"yellow", dob:"31/01/1999"},
 ];
 
-//create Tabulator on DOM element with id "example-table"
-var table = new Tabulator("#example-table", {
-  height:205, // set height of table (in CSS or here), this enables the Virtual DOM and improves render speed dramatically (can be any valid css height value)
-  data:tabledata, //assign data to table
-  layout:"fitColumns", //fit columns to width of table (optional)
-  columns:[ //Define Table Columns
-    {title:"Name", field:"name", width:150},
-    {title:"Age", field:"age", hozAlign:"left", formatter:"progress"},
-    {title:"Favourite Color", field:"col"},
-    {title:"Date Of Birth", field:"dob", sorter:"date", hozAlign:"center"},
-  ],
-  rowClick:function(e, row){ //trigger an alert message when the row is clicked
-    alert("Row " + row.getData().id + " Clicked!!!!");
-  },
-});
-
-table.redraw(true);
-
 function App() {
   return (
-    <div className="App">
-      <body>
-        <div id="example-table"></div>
-      </body>
-    </div>
+    <ReactTabulator
+    data={data}
+    columns={columns}
+    layout={"fitData"}
+    />
   );
 }
 
