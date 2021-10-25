@@ -28,7 +28,7 @@ var table = new Tabulator("#example-table", {
   },
 });
 
-console.log(table);
+table.redraw(true);
 
 function App() {
   return (
